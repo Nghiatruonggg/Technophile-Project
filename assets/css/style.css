@@ -199,14 +199,15 @@
   filter: drop-shadow(2px 3px 8px #cfcfcf);
 }
 
-.sub-menu ul .sub-item {
-  margin-left: -50px;
-  margin-bottom: -20px;
+.sub-menu ul {
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
-.sub-menu ul .sub-item a p {
-  line-height: 0;
+.sub-menu ul .sub-item { 
+  padding: 0
 }
+
 
 .product-menu:hover .sub-menu-1 {
   opacity: 1;
