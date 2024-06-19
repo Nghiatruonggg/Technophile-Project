@@ -42,14 +42,26 @@
                 <div class="col-12 col-md-12 col-md-12">
                     <div class="wrap-menu">
 
+                        <div class="menu-mobile">
+                            <div class="logo-menu-mobile">
+                                <i class="fa-solid fa-bars"></i>
+                            </div>
+                        </div>
+
                         <div class="logo">
                             <a href="#"><img src="./assets/images/Technophile Logo/Transparent V2/Logo LM V2.png" alt="LogoImg"></a>
                         </div>
                             
                         <div class="main-section">
+                            <div class="top-menu-mobile">
+                                <img src="./assets/images/Technophile Logo/Transparent V2/Logo LM V2.png" alt="LogoImg">
+                                <span><i class="fa-solid fa-xmark"></i></span>
+                            </div>
+
+
                             <ul class="menu-list">
                                 <li>
-                                    <a href="./index.html"><span>Home</span></a>  
+                                    <a href="/"><span>Home</span></a>  
                                 </li>
                                 <li class="product-menu">
                                     <a href="#">
@@ -82,7 +94,7 @@
                                 </li>
 
                                 <li>
-                                    <a href=""><span>About Us</span></a>
+                                    <a href="./about-us.html"><span>About Us</span></a>
                                 </li>
                                 <li>
                                     <a href=""><span>News</span></a>
@@ -95,15 +107,20 @@
 
 
                         <div class="user-logo">
-                            <div class="wrap-user-logo">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                            <div class="wrap-user-logo">                                
+                                <i class="fa-solid fa-magnifying-glass search-desktop"></i>
                                 <i class="fa-solid fa-cart-shopping">
                                      <span>0</span>
                                 </i>
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-user user-desktop"></i>
                             </div>
-                        </div>
+                        </div>               
+                    </div>
+                </div>
 
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="search-mobile">
+                        <input type="text" placeholder="What ya looking?">
                     </div>
                 </div>
             </div>
@@ -112,7 +129,7 @@
     
     <!-- Banner -->
     <div class="banner ">
-        <div class="owl-carousel owl-theme">
+        <div class="owl-one owl-carousel owl-theme">
 
             <div class="item">
                 <img src="./assets/images/Banner_LandingPage/Banner Des 1.png" alt="Banner1">
@@ -140,34 +157,34 @@
                     <h2 class="sponsor-title">Sponsored By</h2>
                 </div>
 
-                <!-- Sponsor Logo -->
-        <div class="wrap-sponsor-logo">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class='logo-box'>
-                        <img src="./assets/images/Sponsor Logo/Apple-Logo-2048x1152.png" alt="">
+            <!-- Sponsor Logo -->
+            <div class="wrap-sponsor-logo">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class='logo-box'>
+                            <img src="./assets/images/Sponsor Logo/Apple-Logo-2048x1152.png" alt="">
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class='logo-box asus-logo'>
-                        <img src="./assets/images/Sponsor Logo/AsusTek-black-logo.png" alt="">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class='logo-box asus-logo'>
+                            <img src="./assets/images/Sponsor Logo/AsusTek-black-logo.png" alt="">
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class='logo-box'>
-                        <img src="./assets/images/Sponsor Logo/LG Logo.png" alt="">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class='logo-box'>
+                            <img src="./assets/images/Sponsor Logo/LG Logo.png" alt="">
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class='logo-box'>
-                        <img src="./assets/images/Sponsor Logo/Samsung Logo.png" alt="">
-                    </div>
-                </div>    
-            </div>                   
-        </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class='logo-box'>
+                            <img src="./assets/images/Sponsor Logo/Samsung Logo.png" alt="">
+                        </div>
+                    </div>    
+                </div>                   
+            </div>
 
             </div>
         </div>
@@ -180,12 +197,8 @@
             <!-- Categories Title -->
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12">
-                    <div class="sub-categories-title">
+                    <div class="sub-categories-title sub-title">
                         <p><i class="fa-solid fa-tag"></i>Categories</p>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-12">
-                    <div class="categories-title">
                         <h1>Browse by Category</h1>
                     </div>
                 </div>
@@ -275,13 +288,14 @@
         </div>
     </div>
 
+
     <!-- Preorder -->
     <div class="preorder-section">
         <div class="container">
             <div class="row" id="wrap-preorder">
                 <div class="col-12 col-sm-12 col-md-6">
                     <div class="preorder-text">
-                        <div class="preorder-sub-title">
+                        <div class="preorder-sub-title ">
                             <i class="fa-solid fa-bookmark"></i>
                             <p>Hot Preorder</p>
                         </div>
@@ -295,7 +309,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-12 col-md-6">
+                <div class="col-12 col-sm-12 col-md-6 wrap-preorder-image">
                     <div class="preorder-image">
                         <img src="./assets/images/Preorder image/Preorder Keyboard.png" alt="">
                     </div>
@@ -312,15 +326,592 @@
             <!-- Product Title -->
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12">
-                    <div class="sub-product-title">
+                    <div class="sub-product-title sub-title">
                         <p><i class="fa-solid fa-fire-flame-curved"></i>Our Products</p>
+                        <h1>Explore Our Products</h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Main -->
+            <div class="product-main">
+                <div class="owl-two owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        
+                        <div class="product-item">
+                            <a href="#">
+                                <div class="product-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="Iphone 15">
+                                </div>
+                                <div class="product-text">
+                                    <div class="product-name">
+                                        <p>Iphone 15 Pro</p>
+                                    </div>
+                                    <div class="product-price">
+                                        <p>200$</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <!-- User Review -->
+    <div class="user-review">
+        <!-- User Review Title -->
+        <div class="container">
+            <div class="row" id="user-review-title">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="sub-user-review-title sub-title">
+                        <p><i class="fa-solid fa-users"></i>Community</p>
+                        <h1>User Review</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+    <!-- User Review Main -->
+    <div class="wrap-main-review">
+        <div class="user-review-main">
+            <div class="owl-three owl-carousel owl-theme">
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+    
+                    </div>
+                </div>
+    
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+    
+                    </div>
+                </div>
+    
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+    
+                    </div>
+                </div>
+    
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+    
+                    </div>
+                </div>
+    
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+    
+                    </div>
+                    
+                </div>
+    
+                <div class="item">
+                    <div class="wrap-user-review">
+                        <div class="wrap-review-image">
+                            <img src="./assets/images/Faces for Users Reviews/uifaces-popular-image.jpeg" alt="User1">
+    
+                            <div class="user-review-name">
+                                <p><b>James Anderson</b></p>
+                                <p>CEO of James Cosmestics</p>
+                            </div>
+                        </div>
+    
+                        <div class="wrap-review-text">
+                            <p>I recently purchased a new laptop from Technophile, and the experience was fantastic. The website was user-friendly, with detailed product descriptions and plenty of customer reviews to help make an informed decision.</p>
+                        </div>
+    
+                    </div>
+                </div>
+    
+                        <div class="wrap-review-text"></div>
+    
+    
+                    </div>
+                </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="newsletter-bg">
+                        <img src="./assets/images/Newsletter section/Adjusted bgimg.png" alt="Newsletter-img">
+                        <div class="newsletter-text">
+                            <div class="sub-newsletter-title sub-title">
+                                <p><i class="fa-regular fa-envelope"></i>Newsletter</p>
+                                <h2>Get Weekly Update</h2>
+                                <div class="newsletter-input">
+                                    <input type="text" placeholder="example@gmail.com">
+                                    <button type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-4">
+                    <div class="wrap-footer">
+                        <div class="footer-sub-title">
+                            <p>Support</p>
+                        </div>
+
+                        <div class="footer-content">
+                            <p>53 Nguyen Ngoc Vu<br>Trung Hoa, Cau Giay<br>Ha Noi, Viet Nam</p>
+                        </div>
+
+                        <div class="footer-detail">
+                            <p><i class="fa-solid fa-phone"></i>098 378 6808</p>
+                            <p><i class="fa-solid fa-inbox"></i>nghiatruong110700@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-4">
+                    <div class="wrap-footer">
+                        <div class="footer-sub-title">
+                            <p>Account</p>
+                        </div>
+
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">My Cart</a></li>
+                                <li><a href="#">Products</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-4">
+                    <div class="wrap-footer">
+                        <div class="footer-sub-title">
+                            <p>Quick Link</p>
+                        </div>
+
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">News</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="wrap-footer-bottom">
+                        <p>2024. All Reserved by NghiaTruong</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
 
 
@@ -341,6 +932,9 @@
 
     <!-- Import main.js -->
     <script src="./assets/js/main.js"></script>
+
+    <!-- Import menu-mobile.js -->
+    <script src="./assets/js/menu-mobile.js"></script>
 </body>
 
 </html>
