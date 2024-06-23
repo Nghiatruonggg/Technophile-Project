@@ -11,7 +11,7 @@
 /* Global CSS */
 .container {
   max-width: 1280px;
-  padding: 0;
+  /* padding: 0; */
 }
 
 #wrap-info-section .info-image {
@@ -73,22 +73,19 @@
 /* Main Menu */
 
 .main-menu {
-  height: 80px;
+  width: 100%;
   /* background-color: #fff7ea; */
   z-index: 2;
+  position: sticky;
+  top: 0;
 }
 
 .main-menu .container {
-  width: 100%;
   height: 80px;
   background-color: white;
-  padding: 0;
   border-radius: 10px;
 }
 
-.main-menu .container .row {
-  width: 100%;
-}
 
 .wrap-menu {
   display: flex;
@@ -104,7 +101,6 @@
 }
 
 /* Main Section */
-/* Why main section is larger than the wrap menu */
 .main-section {
   position: relative;
 }
@@ -206,6 +202,8 @@
 }
 .sub-banner-section .container {
   max-width: 100%;
+  padding: 0;
+  overflow: hidden;
 }
 
 .wrap-sub-banner {
@@ -252,6 +250,9 @@
   margin-top: 45px;
 }
 
+.main-sub-title span {
+  color: #0017e6;
+}
 .main-sub-title p {
   margin-right: 5px;
 }
@@ -414,11 +415,9 @@
 
 .newsletter-section .container {
   padding: 0;
+  overflow: hidden;
 }
 
-.newsletter-section .row {
-  width: 100%;
-}
 
 .newsletter-bg {
   width: 100%;
@@ -688,7 +687,7 @@
     }
   }
   
-  @media (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     /* Newsletter Section */
     .newsletter-text {
       width: 80%;
@@ -714,6 +713,41 @@
       padding: 0.5rem 2.5rem;
       height: 3.1rem;
     }
+
+    /* Info Section */
+    
+    .mission-section {
+      margin-top: 40px;
+    }
+    
+    .mission-section .info-text {
+      margin-bottom: 50px;
+    }
+
+    .mission-section .wrap-info-text {
+      padding-left: 0;
+    }
+
+    .commitment-section .wrap-info-text {
+      padding-left: 0;
+    }
+
+    .commitment-section .info-image {
+      justify-content: center !important;
+    }
+    #wrap-info-section .info-text {
+      margin-top: 20px;
+    }
+  }
+
+  /* Achievement Section */
+  .wrap-achievement {
+    margin-bottom: 1rem;
+  }
+
+  /* Core Staff */
+  .core-staff-section {
+    margin-top: 60px;
   }
   
   /* Mobile */

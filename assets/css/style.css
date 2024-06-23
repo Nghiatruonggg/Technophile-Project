@@ -815,7 +815,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 767px) {
   /* Newsletter Section */
   .newsletter-text {
     width: 80%;
@@ -842,6 +842,8 @@
     height: 3.1rem;
   }
 }
+
+
 
 /* Mobile */
 @media screen and (max-width: 610px) {
