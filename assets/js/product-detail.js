@@ -18,9 +18,10 @@ var swiper = new Swiper(".mySwiper", {
 
 // Viewed Product OwlCarousel
 $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
+    loop:false,
+    margin:30,
     nav:true,
+    dots:false,
     responsive:{
         0:{
             items:1
@@ -29,7 +30,7 @@ $('.owl-carousel').owlCarousel({
             items:3
         },
         1000:{
-            items:5
+            items:4
         }
     }
 })
