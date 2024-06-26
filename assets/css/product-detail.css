@@ -458,6 +458,15 @@ html {
   margin-bottom: 0;
 }
 
+.wrap-product-navbar ul .active {
+    border-bottom: 2px solid #0487ff;
+}
+
+.wrap-product-navbar .active a {
+    color: #0487ff;
+}
+
+
 .wrap-product-navbar ul li a {
   text-decoration: none;
   color: #000;
