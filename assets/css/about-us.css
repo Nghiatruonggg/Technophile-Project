@@ -481,12 +481,8 @@
   margin-top: 100px;
 }
 
-.footer .row {
-  width: 100%;
-}
 
 .footer .container {
-  padding: 0;
   border-top: 0.5px #cfcfcf solid;
   border-bottom: 0.5px #cfcfcf solid;
 }
@@ -626,7 +622,7 @@
       display: block;
       position: absolute;
       padding: 0 40px;
-      width: 100%;
+      width: 95%;
     }
   
     .search-mobile input {

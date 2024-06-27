@@ -872,11 +872,12 @@ html {
   .main-menu .logo {
     padding-left: 40px;
   }
+  
   .search-mobile {
     display: block;
     position: absolute;
     padding: 0 40px;
-    width: 100%;
+    width: 97%;
   }
 
   .search-mobile input {

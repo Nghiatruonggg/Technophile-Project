@@ -22,18 +22,15 @@ $(document).ready(function(){
   // Product Sections
   $('.owl-two').owlCarousel({
     loop:false,
-    margin:250,
+    margin:30,
     nav:true,
     dots:false,
     responsive:{
-        500: {
-            items:1
-        },
-        768:{
+        480:{
             items:2
         },
         991:{
-            items:2
+            items:3
         },
         1000:{
             items:4
@@ -49,12 +46,12 @@ $('.owl-three').owlCarousel({
     dots:false,
     responsive:{
         0:{
-            items:2
+            items:1
         },
         600:{
-            items:2
+            items:1
         },
-        1440:{
+        1000:{
             items:3
         }
     }
