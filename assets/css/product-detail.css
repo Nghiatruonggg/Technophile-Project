@@ -17,6 +17,34 @@ html {
   scroll-behavior: smooth;
 }
 
+.sub-info-title {
+  margin-top: 5px;
+}
+
+.sub-info-title i {
+  margin-top: -3px;
+  margin-right: 8px;
+  width: 35px;
+  height: 35px;
+  background-color: #0487ff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.sub-info-title p {
+  display: flex;
+  margin-bottom: 10px;
+  color: #0487ff;
+  font-weight: 600;
+}
+
+.sub-info-title h2 {
+  font-weight: 600;
+}
+
 /* Main Menu */
 
 .main-menu {
@@ -265,10 +293,6 @@ html {
   object-fit: cover;
 }
 
-.swiper-slide .iphone-image {
-  width: 60%;
-}
-
 .swiper {
   width: 100%;
   margin-left: auto;
@@ -283,6 +307,7 @@ html {
 .mySwiper2 {
   height: 80%;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .mySwiper {
@@ -476,6 +501,7 @@ html {
 #wrap-product-description {
   margin-top: 2rem;
   padding: 1rem 0;
+  display: block;
 }
 
 .wrap-description-section {
@@ -501,6 +527,11 @@ html {
 }
 
 /* Product Specification */
+
+#wrap-product-spec {
+  margin-top: 2rem;
+  display: none;
+}
 .specification-title {
   margin-bottom: 2rem;
 }
@@ -512,6 +543,10 @@ html {
 }
 
 /* Product Review */
+
+#wrap-product-review {
+  display: none;
+}
 .review-title {
   margin-top: 2rem;
 }
@@ -569,6 +604,10 @@ html {
 
 .form-floating {
   width: 50%;
+}
+
+.form-floating label span {
+  color: rgb(244, 85, 85);
 }
 
 .submit-button {

@@ -68,7 +68,7 @@
                                     <div class="sub-menu sub-menu-1">
                                         <ul>
                                             <li class="sub-item">
-                                                <a href="#"><p>Mobile</p></a>
+                                                <a href="./mobile-categories.html"><p>Mobile</p></a>
                                             </li>
                                             <li class="sub-item">
                                                 <a href="#"><p>Desktop</p></a>
@@ -141,8 +141,8 @@
         <div class="container">
             <div class="row" id="product-display">
                 <div class="col-12 col-sm-12 col-md-6">
-                    <div class="wrap-product-image">
-                        <div class="swiper mySwiper2">
+                    <div class="wrap-product-image product-img-js">
+                        <!-- <div class="swiper mySwiper2">
 
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
@@ -181,14 +181,14 @@
                           </div>
 
                         </div>
-                      </div>
+                      </div> -->
 
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-6">
-                    <div class="wrap-product-info">
-                        <div class="wrap-top-info">
+                    <div class="wrap-product-info product-info-js">
+                        <!-- <div class="wrap-top-info">
                             <h2 class="product-name">Iphone 15</h2>
                             <span class="product-price">1200$</span>
                             <div class="product-rating">
@@ -214,7 +214,7 @@
                                 <p>
                                     The iPhone 15, released by Apple in September 2023, features a sleek design, improved camera capabilities, a powerful A17 Bionic chip, and enhanced battery life. It also introduces USB-C charging, aligning with new industry standards.
                                 </p>
-                            </div>
+                            </div> -->
 
                             <div class="product-button">
                                 <div class="product-quantity">
@@ -245,13 +245,13 @@
                 <div class="col-12 col-sm-12 col-md-12">
                     <div class="wrap-product-navbar">
                         <ul>
-                            <li class="active">
+                            <li class="active" id="description-navbar">
                                 <a href="#wrap-product-description">Description</a>
                             </li>
-                            <li>
+                            <li id="spec-navbar">
                                 <a href="#wrap-product-spec">Technical Specification</a>
                             </li>
-                            <li>
+                            <li id="review-navbar">
                                 <a href="#wrap-product-review">Reviews</a>
                             </li>
                         </ul>
@@ -259,9 +259,9 @@
                 </div>
             </div>
 
-            <div class="row" id="wrap-product-description">
-                <div class="col-12 col-sm-12 col-md-12">
-                    <div class="wrap-description-section">
+            <div class="row product-description-js" id="wrap-product-description">
+                <!-- <div class="col-12 col-sm-12 col-md-12">
+                    <div class="wrap-description-section ">
                         <h2 class="description-title section-title">Why Choose the iPhone 15?</h2>
                         <p class="description-text">The iPhone 15 is a symbol of premium quality and power. This product features a 6.1-inch OLED Dynamic Island display, providing vivid and lifelike images and videos.
 
@@ -304,18 +304,18 @@
                         </div>
                         <p class="description-text">The iPhone 15 256GB has 6GB of RAM, ensuring smooth multitasking and minimizing lag. Additionally, it comes pre-installed with the iOS 17 operating system, offering a modern interface with high-security smart applications.</p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
-            <div class="row justify-content-center" id="wrap-product-spec">
-                <div class="col-12 col-sm-12 col-md-12">
+            <div class="row justify-content-center product-spec-js" id="wrap-product-spec">
+                <!-- <div class="col-12 col-sm-12 col-md-12">
                     <div class="specification-title">
                         <h2 class="section-title">Technical Specification</h2>
                     </div>
                 </div>
 
-                <div class="col-12 col-sm-12 col-md-12">
+                <div class="col-12 col-sm-12 col-md-12" id="product-spec">
                     <div class="spec-table">
                         <table class="table table-striped">
                             <thead>
@@ -372,7 +372,7 @@
                             </tbody>
                           </table>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="row" id="wrap-product-review">
@@ -380,7 +380,7 @@
                     <div class="review-title">
                         <h2 class="section-title">Reviews</h2>
                     </div>
-                </div>
+                </div>       
 
                 <div class="col-12 col-sm-12 col-md-5">
                     <div class="show-review-section">
@@ -403,7 +403,7 @@
                                 </div>
 
                                 <div class="review-text">
-                                    <p>It was a really wonderful day with the staff of Technophile that I can finally choose the Iphone that really suits me!</p>
+                                    <p>It was a really wonderful day with the staff of Technophile that I can finally choose the phone that really suits me!</p>
                                     
                                 </div>
 
@@ -445,6 +445,10 @@
                 </div>
 
             </div>
+
+            <div class="row">
+                
+            </div>
         </div>
     </div>
             
@@ -462,8 +466,8 @@
                 </div>
             </div>
 
-            <div class="viewed-product">
-                <div class="owl-carousel owl-theme">
+            <div class="viewed-product product-viewed-js">
+                <!-- <div class="owl-carousel owl-theme">
                     <div class="item">
                         <div class="warp-viewed-product">
                             <a href="">
@@ -574,7 +578,7 @@
                                 </div>
                             </a>                          
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -677,7 +681,8 @@
     </div>\
 
 
-
+    <!-- Import axios -->
+    <script src="./lib/axios.min.js"></script>
 
     <!-- Import Bootstrap JS -->
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>

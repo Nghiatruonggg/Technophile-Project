@@ -242,6 +242,11 @@
   width: 50%;
 }
 
+.form-floating label span {
+  color: rgb(244, 85, 85);
+}
+
+
 .send-button {
   margin-top: 1rem;
 }

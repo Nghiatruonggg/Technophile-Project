@@ -2,7 +2,7 @@
 const logoMenuMobile = document.querySelector(".logo-menu-mobile");
 const mainMenuMobile = document.querySelector(".main-section")
 const closeMenuIcon = document.querySelector(".top-menu-mobile i")
-console.log(closeMenuIcon);
+
 
 
 
