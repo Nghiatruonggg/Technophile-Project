@@ -1,58 +1,54 @@
-// Banner
-$(document).ready(function(){
-    $('.owl-one').owlCarousel({
-        loop:true,
-        margin:0,
-        padding:0,
-        nav:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:1
-            },
-            1000:{
-                items:1
-            }
-        }
-    })
-  });
+const mobileProduct_API_test = "https://fhplfd-3000.csb.app/mobile-products/?_start=0&_end=4";
+const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products/";
+// Access class from HTML
+let productMain = document.querySelector("#wrap-product-main");
 
-  // Product Sections
-  $('.owl-two').owlCarousel({
-    loop:false,
-    margin:30,
-    nav:true,
-    dots:false,
-    responsive:{
-        480:{
-            items:2
-        },
-        991:{
-            items:3
-        },
-        1000:{
-            items:4
-        }
-    }
-})
+// Get API from server to local
+const getApi_test = async (url) => {
+    let response = await axios.get(url);
 
-// User Review
-$('.owl-three').owlCarousel({
-    loop:false,
-    margin:89,
-    nav:true,
-    dots:false,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:1
-        },
-        1000:{
-            items:3
-        }
-    }
-})
+    productRender(response.data);
+    
+}
+
+getApi_test(mobileProduct_API_test);
+
+const getApi = async (url) => {
+    let response = await axios.get(url);
+
+    searchRender(response.data);
+} 
+
+getApi(mobileProduct_API);
+
+
+const productRender = (data) => {
+    let HTML = ``;
+    data.forEach((value)=> {
+        HTML += 
+    `<div class="item">
+    
+        <div class="product-item">
+            <a href="./product-detail.html?id=${value.id}">
+            <div class="product-image">
+                <img src="${value.mainImage}" alt="${value.name}">
+            </div>
+            <div class="product-text">
+                <div class="product-name">
+                    <p>${value.name}</p>
+                </div>
+                <div class="product-price">
+                    <p>${value.price}</p>
+                </div>
+            </div>
+            </a>
+        </div>
+    
+
+        
+
+    </div>`
+    });
+
+    productMain.innerHTML = HTML;
+}
