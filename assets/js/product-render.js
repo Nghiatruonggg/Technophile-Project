@@ -14,6 +14,7 @@ getApi(mobileProduct_API);
 let rowJS = document.querySelector(".row-js");
 // console.log(rowJS);
 
+// Render for mobile-categories
 const productsRender = (data) => {
     let HTML = ``;
 

@@ -3,7 +3,7 @@ const searchIc = document.querySelector(".search-desktop");
 const searchBox = document.querySelector(".search-box");
 const searchCloseIc = document.querySelector(".search-close-ic");
 const searchProduct = document.querySelector(".search-product-js");
-console.log(searchIc);
+// console.log(searchIc);
 
 // Search Popup Function
 const openSearchPopup = () => {
@@ -28,13 +28,14 @@ closeSearchPopup();
 
 // Bug with defining target outside searchbox
 searchBox.addEventListener("click", (e) => {
-    // console.log(e.target)
+    console.log(e.target.classList.contains("search-box"));
 })
 
 const searchRender = (data) => {
     let HTML = ``;
     data.forEach((value) => {
-        console.log(value.mainImage);
+        // console.log(value.mainImage);
+
         HTML += 
 `<div class="col-12 col-sm-12 col-md-12">
     <div class="wrap-search-product">

@@ -35,7 +35,6 @@ $(".owl-carousel").owlCarousel({
   },
 });
 
-
 const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products";
 
 // Get ID Products
@@ -57,28 +56,24 @@ let productSpec = document.querySelector("#wrap-product-spec");
 let productReview = document.querySelector("#wrap-product-review");
 // console.log(descriptionNavbar);
 
-
 // Product Navbar
-descriptionNavbar.addEventListener("click", ()=> {
+descriptionNavbar.addEventListener("click", () => {
   productDescription.style.display = "block";
   productSpec.style.display = "none";
   productReview.style.display = "none";
 });
 
-specNavbar.addEventListener("click", ()=> {
+specNavbar.addEventListener("click", () => {
   productDescription.style.display = "none";
   productSpec.style.display = "block";
   productReview.style.display = "none";
 });
 
-reviewNavbar.addEventListener("click", ()=> {
+reviewNavbar.addEventListener("click", () => {
   productDescription.style.display = "none";
   productSpec.style.display = "none";
   productReview.style.display = "block";
 });
-
-
-
 
 // Call API from server to local
 const getApi = async (url) => {
@@ -141,7 +136,7 @@ const renderDetail = (data) => {
       </div>
 </div>`;
 
-// Product Detail
+  // Product Detail
   productInfoJs.innerHTML = `
   <div class="wrap-top-info">
   <h2 class="product-name">${detail[0].name}</h2>
@@ -167,9 +162,25 @@ const renderDetail = (data) => {
 
   <div class="product-brief-intro">
       <p>${detail[0].product_brief_intro}</p>
-  </div>`
+  </div>
+  
+  <div class="product-button">
+    <div class="product-quantity">
+      <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
+      <span>1</span>
+      <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
+    </div>
 
-// Product Description
+    <div class="add-to-cart-button">
+      <button type="submit">Add To Cart</button>
+    </div>
+
+    <div class="wishlist-button">
+      <button type="button"><i class="fa-regular fa-heart"></i></button>
+    </div>
+  </div>`;
+
+  // Product Description
   productDescriptionJs.innerHTML = `
 <div class="col-12 col-sm-12 col-md-12">
   <div class="wrap-description-section">
@@ -201,10 +212,10 @@ const renderDetail = (data) => {
       <p class="description-text">${detail[0].description_text_6}</p>
   </div>
 </div>
-`
+`;
 
-// Product Specifications
-productSpecJs.innerHTML = `
+  // Product Specifications
+  productSpecJs.innerHTML = `
 <div class="col-12 col-sm-12 col-md-12">
   <div class="specification-title">
       <h2 class="section-title">Technical Specification</h2>
@@ -268,14 +279,13 @@ productSpecJs.innerHTML = `
         </tbody>
       </table>
   </div>
-</div>`
-
+</div>`;
 };
 
 // Viewed Products
 const viewedProducts = (data) => {
   let HTML = ``;
-  data.forEach((item)=> {
+  data.forEach((item) => {
     HTML += `
   <div class="owl-carousel owl-theme">
     <div class="item">
@@ -292,12 +302,9 @@ const viewedProducts = (data) => {
               </div>
           </a>                          
     </div>
-  </div>`
-
-  })
+  </div>`;
+  });
 
   productViewedJs.innerHTML = HTML;
   console.log(productViewedJs);
-}
-
-
+};
