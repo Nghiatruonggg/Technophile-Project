@@ -306,5 +306,5 @@ const viewedProducts = (data) => {
   });
 
   productViewedJs.innerHTML = HTML;
-  console.log(productViewedJs);
+  // console.log(productViewedJs);
 };

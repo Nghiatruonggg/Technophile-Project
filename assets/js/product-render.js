@@ -4,7 +4,7 @@ const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products";
 // Call API from server to local
 const getApi = async (url) => {
     let response = await axios.get(url);
-
+    
     productsRender(response.data);
 }
 

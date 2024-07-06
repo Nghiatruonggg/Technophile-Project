@@ -65,14 +65,28 @@
   font-size: 16px;
 }
 
-.menu-list li a span {
-  font-weight: 600;
+
+.menu-list .active a {
+  border-bottom: 2px solid #000;
+  transition: all .1s;
+}
+
+.menu-list li a:hover {
+  border-bottom: 2px solid #000;
+  transition: all .1s;
 }
 
 .menu-list li a {
   text-decoration: none;
   color: black;
+  border: none;
+  font-weight: 600;
 }
+
+.product-menu {
+  font-weight: 600;
+}
+
 
 .product-menu a span {
   padding-right: 8px;

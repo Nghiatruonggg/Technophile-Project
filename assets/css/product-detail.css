@@ -54,16 +54,11 @@ html {
 }
 
 .main-menu .container {
-  width: 100%;
   height: 80px;
   background-color: white;
-  padding: 0;
   border-radius: 10px;
 }
 
-.main-menu .container .row {
-  width: 100%;
-}
 
 .wrap-menu {
   display: flex;
@@ -105,10 +100,27 @@ html {
   font-weight: 600;
 }
 
+.menu-list .active a {
+  border-bottom: 2px solid #000;
+  transition: all .1s;
+}
+
+.menu-list li a:hover {
+  border-bottom: 2px solid #000;
+  transition: all .1s;
+}
+
 .menu-list li a {
   text-decoration: none;
   color: black;
+  border: none;
+  font-weight: 600;
 }
+
+.product-menu {
+  font-weight: 600;
+}
+
 
 .product-menu a span {
   padding-right: 8px;
@@ -483,14 +495,19 @@ html {
   margin-bottom: 0;
 }
 
-.wrap-product-navbar ul .active {
-    border-bottom: 2px solid #0487ff;
+.wrap-product-navbar ul li a {
+  transition: all .1s;
 }
 
-.wrap-product-navbar .active a {
-    color: #0487ff;
+.wrap-product-navbar ul li a:hover {
+  border-bottom: 2px solid #0487ff;
+  color: #0487ff;
 }
 
+.wrap-product-navbar ul .active a {
+  border-bottom: 2px solid #0487ff;
+  color: #0487ff;
+}
 
 .wrap-product-navbar ul li a {
   text-decoration: none;
@@ -678,7 +695,7 @@ html {
 }
 
 .warp-viewed-product a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .product-text {
@@ -911,7 +928,7 @@ html {
   .main-menu .logo {
     padding-left: 40px;
   }
-  
+
   .search-mobile {
     display: block;
     position: absolute;

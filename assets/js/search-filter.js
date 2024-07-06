@@ -7,37 +7,43 @@ const searchProduct = document.querySelector(".search-product-js");
 
 // Search Popup Function
 const openSearchPopup = () => {
-    searchIc.addEventListener("click", ()=> {
-        document.body.classList.add("darken");
-        searchBox.style.opacity = "1";
-        searchCloseIc.style.opacity = "1";
-    });
-}
+  searchIc.addEventListener("click", () => {
+    document.body.classList.add("darken");
+    searchBox.style.opacity = "1";
+    searchCloseIc.style.opacity = "1";
+    searchBox.style.zIndex = "99";
+  });
+};
 
 openSearchPopup();
 
 const closeSearchPopup = () => {
-    searchCloseIc.addEventListener("click", ()=> {
-        document.body.classList.remove("darken");
-        searchBox.style.opacity = "0";
-        searchCloseIc.style.opacity = "0";
-    });
-}
+  searchCloseIc.addEventListener("click", () => {
+    document.body.classList.remove("darken");
+    searchBox.style.opacity = "0";
+    searchCloseIc.style.opacity = "0";
+    searchBox.style.zIndex = "-99";
+  });
+};
 
 closeSearchPopup();
 
-// Bug with defining target outside searchbox
-searchBox.addEventListener("click", (e) => {
-    console.log(e.target.classList.contains("search-box"));
-})
+document.addEventListener("click", function (event) {
+  const isClickInside = searchBox.contains(event.target) || searchIc.contains(event.target);
+  if (isClickInside == false) {
+    document.body.classList.remove("darken");
+    searchBox.style.opacity = "0";
+    searchCloseIc.style.opacity = "0";
+    searchBox.style.zIndex = "-99";
+  }
+});
 
 const searchRender = (data) => {
-    let HTML = ``;
-    data.forEach((value) => {
-        // console.log(value.mainImage);
+  let HTML = ``;
+  data.forEach((value) => {
+    // console.log(value.mainImage);
 
-        HTML += 
-`<div class="col-12 col-sm-12 col-md-12">
+    HTML += `<div class="col-12 col-sm-12 col-md-12">
     <div class="wrap-search-product">
         <a href="./product-detail.html?id=${value.id}">
             <div class="search-product-info">
@@ -58,9 +64,8 @@ const searchRender = (data) => {
             <button type="button">Add To Cart</button>
         </div>    
     </div>
-</div>`
+</div>`;
+  });
 
-    });
-
-    searchProduct.innerHTML = HTML;
-}
+  searchProduct.innerHTML = HTML;
+};
