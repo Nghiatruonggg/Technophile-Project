@@ -684,9 +684,10 @@ html {
 }
 
 .viewed-product-image {
-  background-color: #f5f7fc;
+  background-color: #fff;
   display: flex;
   justify-content: center;
+  height: 250px;
 }
 
 .viewed-product-image img {

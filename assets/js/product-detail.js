@@ -1,4 +1,4 @@
-// Product Image Swiper
+// Product Image Swiper before adding dynamic data JS
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: -35,
   slidesPerView: 4,
@@ -16,24 +16,24 @@ var swiper2 = new Swiper(".mySwiper2", {
   },
 });
 
-// Viewed Product OwlCarousel
-$(".owl-carousel").owlCarousel({
-  loop: false,
-  margin: 30,
-  nav: true,
-  dots: false,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 3,
-    },
-    1000: {
-      items: 4,
-    },
-  },
-});
+// // Viewed Product OwlCarousel
+// $(".owl-carousel").owlCarousel({
+//   loop: false,
+//   margin: 30,
+//   nav: true,
+//   dots: false,
+//   responsive: {
+//     0: {
+//       items: 1,
+//     },
+//     600: {
+//       items: 3,
+//     },
+//     1000: {
+//       items: 4,
+//     },
+//   },
+// });
 
 const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products";
 
@@ -47,14 +47,14 @@ let productImgJs = document.querySelector(".product-img-js");
 let productInfoJs = document.querySelector(".product-info-js");
 let productDescriptionJs = document.querySelector(".product-description-js");
 let productSpecJs = document.querySelector(".product-spec-js");
-let productViewedJs = document.querySelector(".product-viewed-js");
+let productViewedJs = document.querySelector("#product-viewed-js");
 let descriptionNavbar = document.querySelector("#description-navbar");
 let specNavbar = document.querySelector("#spec-navbar");
 let reviewNavbar = document.querySelector("#review-navbar");
 let productDescription = document.querySelector("#wrap-product-description");
 let productSpec = document.querySelector("#wrap-product-spec");
 let productReview = document.querySelector("#wrap-product-review");
-// console.log(descriptionNavbar);
+console.log(productViewedJs);
 
 // Product Navbar
 descriptionNavbar.addEventListener("click", () => {
@@ -72,7 +72,7 @@ specNavbar.addEventListener("click", () => {
 reviewNavbar.addEventListener("click", () => {
   productDescription.style.display = "none";
   productSpec.style.display = "none";
-  productReview.style.display = "block";
+  productReview.style.display = "flex";
 });
 
 // Call API from server to local
@@ -101,7 +101,7 @@ const renderDetail = (data) => {
         <img class="iphone-image" src="${detail[0].mainImage}"/>
       </div>
       <div class="swiper-slide">
-        <img src=${detail[0].thumbnail_1}" />
+        <img src="${detail[0].thumbnail_1}" />
       </div>
       <div class="swiper-slide">
         <img src="${detail[0].thumbnail_2}" />
@@ -135,6 +135,24 @@ const renderDetail = (data) => {
     
       </div>
 </div>`;
+
+  // Product Image Swiper after adding dynamic data JS
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: -35,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
 
   // Product Detail
   productInfoJs.innerHTML = `
@@ -287,24 +305,41 @@ const viewedProducts = (data) => {
   let HTML = ``;
   data.forEach((item) => {
     HTML += `
-  <div class="owl-carousel owl-theme">
     <div class="item">
-      <div class="warp-viewed-product">
-          <a href="./product-details.html">
-              <div class="viewed-product-image">
-                  <img src="${item.mainImage}" alt="${item.name}">
-              </div>
-              <div class="viewed-product-detail">
-                  <div class="product-text">
-                      <p class="product-name">${item.name}</p>
-                      <p class="product-price">${item.price}</p>
-                  </div>
-              </div>
-          </a>                          
+    <div class="warp-viewed-product">
+        <a href="./product-detail.html?id=${item.id}">
+            <div class="viewed-product-image">
+                <img src="${item.mainImage}" alt="${item.name}">
+            </div>
+            <div class="viewed-product-detail">
+                <div class="product-text">
+                    <p class="product-name">${item.name}</p>
+                    <p class="product-price">${item.price}</p>
+                </div>
+            </div>
+        </a>                          
     </div>
-  </div>`;
+</div>`;
+
+    productViewedJs.innerHTML = HTML;
   });
 
-  productViewedJs.innerHTML = HTML;
-  // console.log(productViewedJs);
+    // Viewed Product OwlCarousel after data
+  $(".owl-carousel").owlCarousel({
+    loop: false,
+    margin: 30,
+    nav: true,
+    dots: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 4,
+      },
+    },
+  });
 };
