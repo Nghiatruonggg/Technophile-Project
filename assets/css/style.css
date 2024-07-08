@@ -687,10 +687,11 @@ body.darken-2::before {
 
 #search-input .form-floating input {
   width: 90%;
+  padding-left: 16px;
 }
 
 .form-floating label {
-  margin-left: 35px;
+  margin-left: 50px;
 }
 
 #search-status {

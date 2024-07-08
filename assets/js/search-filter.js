@@ -29,7 +29,8 @@ const closeSearchPopup = () => {
 closeSearchPopup();
 
 document.addEventListener("click", function (event) {
-  const isClickInside = searchBox.contains(event.target) || searchIc.contains(event.target);
+  const isClickInside =
+    searchBox.contains(event.target) || searchIc.contains(event.target);
   if (isClickInside == false) {
     document.body.classList.remove("darken");
     searchBox.style.opacity = "0";
@@ -38,6 +39,23 @@ document.addEventListener("click", function (event) {
   }
 });
 
+const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products";
+
+const getApi_SearchPopup = async (url) => {
+  let response = await axios.get(url);
+  return response.data;
+}
+
+let data = [];
+const storeData = async () => {
+  data = await getApi_SearchPopup(mobileProduct_API);
+  searchRender(data);
+}
+
+storeData();
+
+
+// Render for Search Popup
 const searchRender = (data) => {
   let HTML = ``;
   data.forEach((value) => {
@@ -69,3 +87,40 @@ const searchRender = (data) => {
 
   searchProduct.innerHTML = HTML;
 };
+
+// Filter by Keyword
+const filterBySearchTerm = (data, searchTerm) => {
+  return data.filter((item) => {
+    const oldTitle = item.name.toLowerCase();
+    return oldTitle.includes(searchTerm);
+  });
+}
+
+// All Type Search
+const filterProduct = () => {
+  // Take input from user typing in
+  let textSearch = document.querySelector("#search-input input").value;
+  let searchTerm = textSearch.toLowerCase().trim(); // Convert input value into lowercase and remove whitespace
+
+  let filteredData = data;
+
+  // Filter by Keyword
+  filteredData = filterBySearchTerm(data, searchTerm);
+
+  searchRender(filteredData); // Display Data 
+};
+
+let clearTime;
+
+// Event Listening on Input Search
+let inputSearch = document.querySelector("#search-input input");
+inputSearch.addEventListener("input", () => {
+  clearTimeout(clearTime);
+
+  setTimeout(()=> {
+    filterProduct();
+  }, 1000);
+
+});
+
+

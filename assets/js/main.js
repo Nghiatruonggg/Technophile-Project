@@ -1,6 +1,5 @@
 const mobileProduct_API_test =
   "https://fhplfd-3000.csb.app/mobile-products/?_start=0&_end=8";
-const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products/";
 // Access class from HTML
 let productMain = document.querySelector("#wrap-product-main");
 
@@ -12,14 +11,6 @@ const getApi_test = async (url) => {
 };
 
 getApi_test(mobileProduct_API_test);
-
-const getApi = async (url) => {
-  let response = await axios.get(url);
-
-  searchRender(response.data);
-};
-
-getApi(mobileProduct_API);
 
 const productRender = (data) => {
   let HTML = ``;
