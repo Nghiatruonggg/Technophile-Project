@@ -39,7 +39,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
-const mobileProduct_API = "https://fhplfd-3000.csb.app/mobile-products";
+const mobileProductforSearch_API = "https://fhplfd-3000.csb.app/mobile-products";
 
 const getApi_SearchPopup = async (url) => {
   let response = await axios.get(url);
@@ -48,7 +48,7 @@ const getApi_SearchPopup = async (url) => {
 
 let data = [];
 const storeData = async () => {
-  data = await getApi_SearchPopup(mobileProduct_API);
+  data = await getApi_SearchPopup(mobileProductforSearch_API);
   searchRender(data);
 }
 
@@ -60,7 +60,6 @@ const searchRender = (data) => {
   let HTML = ``;
   data.forEach((value) => {
     // console.log(value.mainImage);
-
     HTML += `<div class="col-12 col-sm-12 col-md-12">
     <div class="wrap-search-product">
         <a href="./product-detail.html?id=${value.id}">
@@ -88,6 +87,8 @@ const searchRender = (data) => {
   searchProduct.innerHTML = HTML;
 };
 
+
+
 // Filter by Keyword
 const filterBySearchTerm = (data, searchTerm) => {
   return data.filter((item) => {
@@ -96,11 +97,14 @@ const filterBySearchTerm = (data, searchTerm) => {
   });
 }
 
+
 // All Type Search
 const filterProduct = () => {
   // Take input from user typing in
   let textSearch = document.querySelector("#search-input input").value;
   let searchTerm = textSearch.toLowerCase().trim(); // Convert input value into lowercase and remove whitespace
+
+
 
   let filteredData = data;
 
@@ -110,7 +114,11 @@ const filterProduct = () => {
   searchRender(filteredData); // Display Data 
 };
 
+
+
+
 let clearTime;
+
 
 // Event Listening on Input Search
 let inputSearch = document.querySelector("#search-input input");
@@ -122,5 +130,4 @@ inputSearch.addEventListener("input", () => {
   }, 1000);
 
 });
-
 

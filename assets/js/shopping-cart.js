@@ -2,7 +2,6 @@
 let shoppingCart = document.querySelector(".shopping-cart-js");
 let cartIc = document.querySelector(".cart-ic");
 let cartCloseIc = document.querySelector("#cart-close-ic");
-// console.log(cartCloseIc);
 
 cartIc.addEventListener("click", () => {
   document.body.classList.add("darken-2");
