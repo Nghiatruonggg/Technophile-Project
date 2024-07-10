@@ -72,13 +72,36 @@ const searchByCategory = (
   return resultCheckbox;
 };
 
+const searchByPriceRange = (newData, priceRange1Checkbox, priceRange2Checkbox, priceRange3Checkbox, priceRange4Checkbox) => {
+  if (!priceRange1Checkbox && !priceRange2Checkbox && !priceRange3Checkbox && !priceRange4Checkbox) {
+    return newData;
+  }
+
+  if (priceRange1Checkbox && priceRange2Checkbox && priceRange3Checkbox && priceRange4Checkbox) {
+    return [];
+  }
+
+  const resultCheckbox = newData.filter((item)=> {
+    return (
+      (priceRange1Checkbox && item.price_range === "From 20$ - 50$") ||
+      (priceRange2Checkbox && item.price_range === "From 50$ - 100$") ||
+      (priceRange3Checkbox && item.price_range === "From 100$ - 500$") ||
+      (priceRange4Checkbox && item.price_range === "500$+")
+    );
+  });
+
+  return resultCheckbox;
+}
+
 // General Search
 const searchCategory = () => {
   // Check to see if user click in the box
   let smartphonesCheckbox = document.querySelector("#smartphones").checked;
   let featurePhonesCheckbox = document.querySelector("#feature-phones").checked;
-  console.log(featurePhonesCheckbox);
-  console.log(smartphonesCheckbox);
+  let priceRange1Checkbox = document.querySelector("#price-range-1").checked;
+  let priceRange2Checkbox = document.querySelector("#price-range-2").checked;
+  let priceRange3Checkbox = document.querySelector("#price-range-3").checked;
+  let priceRange4Checkbox = document.querySelector("#price-range-4").checked;
 
   let newData = dataMobileCategory;
 
@@ -88,6 +111,9 @@ const searchCategory = () => {
     smartphonesCheckbox,
     featurePhonesCheckbox
   );
+
+  // Price Filter
+  newData = searchByPriceRange(newData, priceRange1Checkbox, priceRange2Checkbox, priceRange3Checkbox, priceRange4Checkbox);
 
   productsRender(newData);
 };
@@ -104,3 +130,5 @@ const filterCategory = (selector) => {
 };
 
 filterCategory(".categories-list .filter-list li input");
+
+filterCategory(".price-list .filter-list li input");
