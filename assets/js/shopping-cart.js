@@ -8,6 +8,14 @@ cartIc.addEventListener("click", () => {
   shoppingCart.style.transform = "translateX(0)";
 });
 
+const cartPopup = () => {
+  let shoppingCart = document.querySelector(".shopping-cart-js");
+  document.body.classList.add("darken-2");
+  shoppingCart.style.transform = "translateX(0)";
+}
+
+export {cartPopup};
+
 cartCloseIc.addEventListener("click", () => {
   document.body.classList.remove("darken-2");
   shoppingCart.style.transform = "translateX(100%)";
@@ -22,3 +30,8 @@ document.addEventListener("click", (e) => {
     shoppingCart.style.transform = "translateX(100%)";
   }
 });
+
+
+
+
+

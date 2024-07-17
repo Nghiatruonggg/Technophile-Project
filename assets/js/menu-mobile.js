@@ -2,6 +2,8 @@
 const logoMenuMobile = document.querySelector(".logo-menu-mobile");
 const mainMenuMobile = document.querySelector(".main-section")
 const closeMenuIcon = document.querySelector(".top-menu-mobile i")
+const productMenuJS = document.querySelector(".product-menu-JS");
+const subMenu1 = document.querySelector(".sub-menu-1");
 
 
 
@@ -13,5 +15,8 @@ logoMenuMobile.addEventListener("click", ()=> {
 
 // Turn off the menu mobile
 closeMenuIcon.addEventListener("click", ()=> {
-    mainMenuMobile.style.transform = "translateX(-100%)";
+    mainMenuMobile.style.transform = "translateX(-200%)";
 });
+
+
+

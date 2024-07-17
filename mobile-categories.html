@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="logo">
-                            <a href="#"><img src="./assets/images/Technophile Logo/Transparent V2/Logo LM V2.png" alt="LogoImg"></a>
+                            <a href="/"><img src="./assets/images/Technophile Logo/Transparent V2/Logo LM V2.png" alt="LogoImg"></a>
                         </div>
                             
                         <div class="main-section">
@@ -52,8 +52,11 @@
                                     <a href="/">Home</a>  
                                 </li>
     
-                                <li class="product-menu"> Product <i class="fa-solid fa-chevron-down"></i>
-                                    <div class="sub-menu sub-menu-1">
+                                <li class="product-menu">
+                                    <a href="#"> 
+                                        Product <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                    <div class="sub-menu sub-menu-1 sub-menu-mobile">
                                         <ul>
                                             <li class="sub-item">
                                                 <a href="./mobile-categories.html"><p>Mobile</p></a>
@@ -246,6 +249,10 @@
                                     <p class="product-name">Iphone 15 Pro</p>
                                     <p class="product-price">300$</p>
                                 </div>
+
+                                <div class="cart-product-button">
+                                    <button><i class="fa-solid fa-plus"></i></button>
+                                </div>
                             </div>
                                               
                     </div> -->
@@ -375,64 +382,64 @@
                 </div>
             </div>
         </div>
-    </div>\
-
-    <!-- Search Popup -->
-    <div class="search-close-ic">
-        <i class="fa-solid fa-xmark"></i>
     </div>
 
-    <div class="search-box">
-        <div class="container">
-            <div class="wrap-overflow">
+   <!-- Search Popup -->
+   <div class="search-box">
+    <div class="container">
+        <div class="wrap-overflow">
+            <div class="search-close-ic">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
 
-                <div class="row" id="search-input">
-                    <div class="col-12 col-sm-12 col-md-12">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Search here!</label>
-                        </div>
+            <div class="row" id="search-input">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Search here!</label>
                     </div>
                 </div>
-    
-                <div class="row" id="search-status">
-                    <div class="col-12 col-sm-12 col-md-12">
-                        <div class="wrap-search-status">
-                            <p class="result-number">1 result found</p>
-                            <a href="./mobile-categories.html">View All</a>
-                        </div>
+            </div>
+
+            <div class="row" id="search-status">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="wrap-search-status">
+                        <p class="result-number">1 result found</p>
+                        <a href="./mobile-categories.html">View All</a>
                     </div>
                 </div>
-    
-                <div class="row search-product-js" id="search-product">
-                    <div class="col-12 col-sm-12 col-md-12">
-                        <div class="wrap-search-product">
-                            <a href="./product-detail.html">
-                                <div class="search-product-info">
-                                
-                                    <div class="search-image">
-                                        <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="">
-                                    </div>
-    
-                                    <div class="search-text">
-                                        <p class="search-name">Iphone 15</p>
-                                        <p class="search-price">1200$</p>
-                                    </div>
-    
+            </div>
+
+            <div class="row search-product-js" id="search-product">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="wrap-search-product">
+                        <a href="./product-detail.html">
+                            <div class="search-product-info">
+                            
+                                <div class="search-image">
+                                    <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="">
                                 </div>
-                            </a>
-    
-                        <div class="add-to-cart-button">
-                            <button type="button">Add To Cart</button>
-                        </div>    
-                    </div>
-                    </div>
-    
+
+                                <div class="search-text">
+                                    <p class="search-name">Iphone 15</p>
+                                    <p class="search-price">1200$</p>
+                                </div>
+
+                            </div>
+                        </a>
+
+                    <div class="add-to-cart-button">
+                        <button type="button">Add To Cart</button>
+                    </div>    
+                </div>
                 </div>
 
             </div>
+
         </div>
     </div>
+</div>
+
 
     <!-- Shopping cart -->
     <div class="shopping-cart shopping-cart-js">
@@ -447,20 +454,8 @@
             </div>
 
             <div class="row" id="wrap-product-section">
-                <div class="col-12 col-sm-12 col-md-12">
-                    <div class="product-cart">
-                        <div class="product-cart-image">
-                            <img src="./assets/images/Product Imagess/Iphone 15 BlueBlack.webp" alt="image">
-                            <i class="fa-solid fa-xmark"></i>
-                        </div>
+                <div class="col-12 col-sm-12 col-md-12" id="product-row-js">
 
-                        <div class="product-cart-text">
-                            <p class="product-name">Iphone 15</p>
-                            <p class="product-price">1200$</p>
-                        </div>
-
-                    </div>
-                </div>
             </div>
 
             <div class="row" id="wrap-cart-checkout">
@@ -498,21 +493,21 @@
     <!-- Import Bootstrap JS -->
     <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Import mobile-category.js -->
+    <script type="module" src="./assets/js/mobile-category.js"></script>
+
     <!-- Import Jquery -->
     <!-- <script src="./lib/jquery-3.7.1.min.js"></script> -->
     
     <!-- Import Owl Carousel JS -->
     <!-- <script src="./lib/owlcarousel/owl.carousel.min.js"></script> -->
 
-    <!-- Import product-render.js -->
-    <script src="./assets/js/product-render.js"></script>
+    <!-- Import shopping-cart.js -->
+    <script type="module" src="./assets/js/shopping-cart.js"></script>
 
     <!-- Import search-filter.js -->
     <script src="./assets/js/search-filter.js"></script>
 
-    <!-- Import shopping-cart.js -->
-    <script src="./assets/js/shopping-cart.js"></script>
-    
     <!-- Import menu-mobile.js -->
     <script src="./assets/js/menu-mobile.js"></script>
 

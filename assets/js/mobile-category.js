@@ -15,6 +15,8 @@ const storeDataMobileCategory = async () => {
 
 storeDataMobileCategory();
 
+import { cartPopup } from "./shopping-cart.js";
+
 // Show Products to HTML
 let rowJS = document.querySelector(".row-js");
 // console.log(rowJS);
@@ -38,6 +40,10 @@ const productsRender = (data) => {
                         <p class="product-price">${value.price}</p>
                     </div>
                 </a>
+
+                <div class="cart-product-button">
+                <button><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
                           
         </div>
@@ -46,6 +52,62 @@ const productsRender = (data) => {
 
   // Fill product data out to HTML(row-js)
   rowJS.innerHTML = HTML;
+
+  // Add to Cart
+  let addToCart = document.querySelectorAll(".cart-product-button button");
+
+  addToCart.forEach((button) => {
+    button.addEventListener("click", () => {
+      addToCartClicked(button);
+    });
+  });
+
+  // Take infos from the button
+  const addToCartClicked = (button) => {
+    const buttonParent = button.parentElement;
+    const cartItem = buttonParent.parentElement;
+
+    let price = cartItem.querySelector(".product-price").innerHTML;
+    let name = cartItem.querySelector(".product-name").innerHTML;
+    let imgSrc = cartItem.querySelector(".product-image img").src;
+
+    addToCartItem(price, name, imgSrc);
+  };
+
+  // Show Images + Price to Cart
+  const addToCartItem = (price, name, imgSrc) => {
+    let productRow = document.querySelector("#product-row-js");
+
+    // Create div class
+    let divEl = document.createElement("div");
+
+    // Put divEl into productRow
+    divEl.classList.add("product-wrap");
+
+    let cartHTML = `
+    <div class="product-cart">
+      <div class="product-cart-image">
+        <img src="${imgSrc}" alt="${name}">
+        <i id="remove-btn" class="fa-solid fa-xmark"></i>
+      </div>
+    
+      <div class="product-cart-text">
+        <p class="product-name">${name}</p>
+        <p class="product-price">${price}</p>
+      </div>
+    
+    </div>
+    
+    <div class="product-quantity">
+      <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
+      <span>1</span>
+      <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
+    </div>
+    `;
+
+    divEl.innerHTML = cartHTML; 
+    productRow.appendChild(divEl);
+  };
 };
 
 // Category Filter
@@ -72,16 +134,32 @@ const searchByCategory = (
   return resultCheckbox;
 };
 
-const searchByPriceRange = (newData, priceRange1Checkbox, priceRange2Checkbox, priceRange3Checkbox, priceRange4Checkbox) => {
-  if (!priceRange1Checkbox && !priceRange2Checkbox && !priceRange3Checkbox && !priceRange4Checkbox) {
+const searchByPriceRange = (
+  newData,
+  priceRange1Checkbox,
+  priceRange2Checkbox,
+  priceRange3Checkbox,
+  priceRange4Checkbox
+) => {
+  if (
+    !priceRange1Checkbox &&
+    !priceRange2Checkbox &&
+    !priceRange3Checkbox &&
+    !priceRange4Checkbox
+  ) {
     return newData;
   }
 
-  if (priceRange1Checkbox && priceRange2Checkbox && priceRange3Checkbox && priceRange4Checkbox) {
+  if (
+    priceRange1Checkbox &&
+    priceRange2Checkbox &&
+    priceRange3Checkbox &&
+    priceRange4Checkbox
+  ) {
     return [];
   }
 
-  const resultCheckbox = newData.filter((item)=> {
+  const resultCheckbox = newData.filter((item) => {
     return (
       (priceRange1Checkbox && item.price_range === "From 20$ - 50$") ||
       (priceRange2Checkbox && item.price_range === "From 50$ - 100$") ||
@@ -91,7 +169,7 @@ const searchByPriceRange = (newData, priceRange1Checkbox, priceRange2Checkbox, p
   });
 
   return resultCheckbox;
-}
+};
 
 // General Search
 const searchCategory = () => {
@@ -113,7 +191,13 @@ const searchCategory = () => {
   );
 
   // Price Filter
-  newData = searchByPriceRange(newData, priceRange1Checkbox, priceRange2Checkbox, priceRange3Checkbox, priceRange4Checkbox);
+  newData = searchByPriceRange(
+    newData,
+    priceRange1Checkbox,
+    priceRange2Checkbox,
+    priceRange3Checkbox,
+    priceRange4Checkbox
+  );
 
   productsRender(newData);
 };
