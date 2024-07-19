@@ -15,8 +15,6 @@ const storeDataMobileCategory = async () => {
 
 storeDataMobileCategory();
 
-import { cartPopup } from "./shopping-cart.js";
-
 // Show Products to HTML
 let rowJS = document.querySelector(".row-js");
 // console.log(rowJS);
@@ -105,9 +103,85 @@ const productsRender = (data) => {
     </div>
     `;
 
-    divEl.innerHTML = cartHTML; 
+    divEl.innerHTML = cartHTML;
+
+    // Check to see if there are the same products on cart
+    let cartImgEl = document.querySelectorAll(".product-cart-image");
+    let isDuplicated = false;
+
+    cartImgEl.forEach((item) => {
+      let itemImg = item.querySelectorAll("img");
+      itemImg.forEach((value) => {
+        if (value.src == imgSrc) {
+          alert("Products Already Existed");
+          isDuplicated = true;
+        }
+      });
+    });
+
+    if (isDuplicated == true) {
+      return null;
+    }
+
     productRow.appendChild(divEl);
+    updateCartPrice();
+
+
+  // Delete Products
+  const removeProduct = (item) => {
+    item.parentElement.parentElement.parentElement.remove();
   };
+
+  let removeBtn = document.querySelectorAll("#remove-btn");
+  removeBtn.forEach((item) => {
+    item.addEventListener("click", () => {
+      removeProduct(item);
+      updateCartPrice();
+    });
+  });
+
+  // Quantity Function (Need to be fixed)
+  let spanElement = document.querySelectorAll(".product-quantity span");
+  spanElement.forEach((spanEl) => {
+    let minusBtn = spanEl.previousElementSibling;
+    let plusBtn = spanEl.nextElementSibling;
+
+    minusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      if (quantity > 1) {
+        spanEl.innerHTML = quantity - 1;
+      }
+      updateCartPrice();
+    });
+
+    plusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      spanEl.innerHTML = quantity + 1;
+      updateCartPrice();
+    });
+  });
+
+
+  };
+
+  // Update Cart Price
+  const updateCartPrice = () => {
+    let productWrap = document.querySelectorAll(".product-wrap");
+    let totalCart = 0;
+
+    productWrap.forEach((product)=> {
+      const quantity = product.querySelector(".product-quantity span").innerHTML;
+      const quantityInt = parseInt(quantity);
+
+      console.log(quantityInt);
+      const price = product.querySelector(".product-cart-text .product-price").innerHTML;
+      
+      const priceFloat = parseFloat(price.replace("","$"));
+      console.log(priceFloat); //NaN fix
+    });
+  };
+
+
 };
 
 // Category Filter

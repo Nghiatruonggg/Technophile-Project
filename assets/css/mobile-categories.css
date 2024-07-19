@@ -1084,6 +1084,17 @@ body.darken-2::before {
   }
 }
 
+@media screen and (max-width: 780px) {
+  /* Shopping Cart */
+  .shopping-cart {
+    width: 60%;
+  }
+
+  body.darken-2::before {
+    width: 40%;
+  }
+}
+
 /* Mobile */
 @media screen and (max-width: 610px) {
   /* Newsletter Section */
@@ -1192,5 +1203,14 @@ body.darken-2::before {
 
   .product-row {
     width: 100%;
+  }
+
+  /* Shopping Cart */
+  .shopping-cart {
+    width: 80%;
+  }
+
+  body.darken-2::before {
+    width: 20%;
   }
 }
