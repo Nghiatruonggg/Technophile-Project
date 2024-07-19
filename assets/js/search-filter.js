@@ -85,6 +85,160 @@ const searchRender = (data) => {
   });
 
   searchProduct.innerHTML = HTML;
+
+  // Add to cart
+  let addBtn = document.querySelectorAll(".add-to-cart-button button");
+  addBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+      addToCartClicked(button);
+    });
+  });
+
+  // Take infos from button
+  const addToCartClicked = (button) => {
+    let buttonParent = button.parentElement;
+    let divParent = buttonParent.parentElement;
+    
+    // console.log(divParent);
+
+    let price = divParent.querySelector(".search-product-info .search-price").innerHTML;
+    let name = divParent.querySelector(".search-product-info .search-name").innerHTML;
+    let imgSrc = divParent.querySelector(".search-image img").src;
+    // console.log(imgSrc);
+    addToCartItem(price, name, imgSrc);
+
+
+  }
+
+  // Show info to cart popup
+  const addToCartItem = (price, name, imgSrc) => {
+    let productRow = document.querySelector("#product-row-js");
+    // console.log(productRow);
+
+    // Create div
+    let divEl = document.createElement("div");
+    // console.log(divEl);
+
+    // Create class for divEl
+    divEl.classList.add("product-wrap");
+
+    let cartHTML = `
+    <div class="product-cart">
+      <div class="product-cart-image">
+        <img src="${imgSrc}" alt="${name}">
+        <i id="remove-btn" class="fa-solid fa-xmark"></i>
+      </div>
+    
+      <div class="product-cart-text">
+        <p class="product-name">${name}</p>
+        <p class="product-price">${price}</p>
+      </div>
+    
+    </div>
+    
+    <div class="product-quantity">
+      <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
+      <span>1</span>
+      <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
+    </div>`
+
+
+    divEl.innerHTML = cartHTML;
+    updateCartPrice();
+
+
+    // Check to see if there are similar products
+    let cartImgEl = document.querySelectorAll(".product-cart-image");
+    let isDuplicated = false;
+
+    cartImgEl.forEach((image) => {
+      let itemSrc = image.querySelectorAll("img");
+      itemSrc.forEach((value) => {
+        if (value.src == imgSrc) {
+          alert("Product Already Existed");
+          isDuplicated = true;
+        }
+      });
+    });
+
+    if (isDuplicated == true) {
+      return null
+    }
+    
+    productRow.appendChild(divEl);
+
+    // Remove cart item
+    const removeProduct = (button) => {
+      button.parentElement.parentElement.parentElement.remove();
+    }
+    
+    let removeBtn = document.querySelectorAll("#remove-btn");
+    removeBtn.forEach((button) => {
+      button.addEventListener("click", () => {
+        removeProduct(button)
+        updateCartPrice();
+      });
+    });
+
+
+    // Quantity Function (Need to be fixed)
+    let spanElement = document.querySelectorAll(".product-quantity span");
+    spanElement.forEach((spanEl) => {
+      let minusBtn = spanEl.previousElementSibling;
+      let plusBtn = spanEl.nextElementSibling;
+
+      minusBtn.addEventListener("click", () => {
+        let quantity = parseInt(spanEl.innerHTML);
+        if (quantity > 1) {
+          spanEl.innerHTML = quantity - 1;
+        }
+        updateCartPrice();
+      });
+
+      plusBtn.addEventListener("click", () => {
+        let quantity = parseInt(spanEl.innerHTML);
+        spanEl.innerHTML = quantity + 1;
+        updateCartPrice();
+      });
+    });
+
+  }
+  // Update Cart Price
+  const updateCartPrice = () => {
+    let productWrap = document.querySelectorAll(".product-wrap");
+    let totalCart = 0;
+    let totalQuantity = 0;
+
+    productWrap.forEach((product) => {
+      const quantity = product.querySelector(
+        ".product-quantity span"
+      ).innerHTML;
+      const quantityInt = parseInt(quantity);
+
+      const price = product.querySelector(
+        ".product-cart-text .product-price"
+      ).innerHTML;
+
+      const priceFloat = parseFloat(price.replace("$", ""));
+
+      totalCart += priceFloat * quantityInt;
+      totalQuantity += quantityInt;
+    });
+
+    // Update Total Price
+    let totalEl = document.querySelector(".cart-subtotal span");
+    totalEl.innerHTML = totalCart + "$";
+
+    // Add quantity to cartIC
+    let cartQuantity = document.querySelector(".user-logo i span");
+    cartQuantity.innerHTML = totalQuantity;
+
+    if (totalQuantity > 10) {
+      cartQuantity.innerHTML = "10+";
+    } 
+   
+  };
+
 };
 
 
@@ -102,9 +256,7 @@ const filterBySearchTerm = (data, searchTerm) => {
 const filterProduct = () => {
   // Take input from user typing in
   let textSearch = document.querySelector("#search-input input").value;
-  let searchTerm = textSearch.toLowerCase().trim(); // Convert input value into lowercase and remove whitespace
-
-
+  let searchTerm = textSearch.toLowerCase().trim(); // Convert dinput value into lowercase and remove whitespace
 
   let filteredData = data;
 
@@ -115,10 +267,7 @@ const filterProduct = () => {
 };
 
 
-
-
 let clearTime;
-
 
 // Event Listening on Input Search
 let inputSearch = document.querySelector("#search-input input");
@@ -130,4 +279,3 @@ inputSearch.addEventListener("input", () => {
   }, 1000);
 
 });
-

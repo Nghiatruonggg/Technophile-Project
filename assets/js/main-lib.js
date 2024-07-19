@@ -4,6 +4,7 @@ $(document).ready(function () {
     loop: true,
     margin: 0,
     padding: 0,
+    autoplay: true,
     nav: true,
     responsive: {
       0: {

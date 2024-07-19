@@ -198,6 +198,24 @@ const renderDetail = (data) => {
     </div>
   </div>`;
 
+  // Quantity Function
+  let spanElement = document.querySelector(".product-quantity span");
+  let minusBtn = spanElement.previousElementSibling;
+  let plusBtn = spanElement.nextElementSibling;
+
+  minusBtn.addEventListener("click", () => {
+    let quantity = parseInt(spanElement.innerHTML);
+    if (quantity > 1) {
+      spanElement.innerHTML = quantity - 1;
+    }
+  });
+
+  plusBtn.addEventListener("click", () => {
+    let quantity = parseInt(spanElement.innerHTML);
+    spanElement.innerHTML = quantity + 1;
+  });
+  
+
   // Product Description
   productDescriptionJs.innerHTML = `
 <div class="col-12 col-sm-12 col-md-12">

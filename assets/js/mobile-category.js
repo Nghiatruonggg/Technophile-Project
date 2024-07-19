@@ -126,62 +126,72 @@ const productsRender = (data) => {
     productRow.appendChild(divEl);
     updateCartPrice();
 
+    // Delete Products
+    const removeProduct = (item) => {
+      item.parentElement.parentElement.parentElement.remove();
+    };
 
-  // Delete Products
-  const removeProduct = (item) => {
-    item.parentElement.parentElement.parentElement.remove();
-  };
-
-  let removeBtn = document.querySelectorAll("#remove-btn");
-  removeBtn.forEach((item) => {
-    item.addEventListener("click", () => {
-      removeProduct(item);
-      updateCartPrice();
-    });
-  });
-
-  // Quantity Function (Need to be fixed)
-  let spanElement = document.querySelectorAll(".product-quantity span");
-  spanElement.forEach((spanEl) => {
-    let minusBtn = spanEl.previousElementSibling;
-    let plusBtn = spanEl.nextElementSibling;
-
-    minusBtn.addEventListener("click", () => {
-      let quantity = parseInt(spanEl.innerHTML);
-      if (quantity > 1) {
-        spanEl.innerHTML = quantity - 1;
-      }
-      updateCartPrice();
+    let removeBtn = document.querySelectorAll("#remove-btn");
+    removeBtn.forEach((item) => {
+      item.addEventListener("click", () => {
+        removeProduct(item);
+        updateCartPrice();
+      });
     });
 
-    plusBtn.addEventListener("click", () => {
-      let quantity = parseInt(spanEl.innerHTML);
-      spanEl.innerHTML = quantity + 1;
-      updateCartPrice();
+    // Quantity Function (Need to be fixed)
+    let spanElement = document.querySelectorAll(".product-quantity span");
+    spanElement.forEach((spanEl) => {
+      let minusBtn = spanEl.previousElementSibling;
+      let plusBtn = spanEl.nextElementSibling;
+
+      minusBtn.addEventListener("click", () => {
+        let quantity = parseInt(spanEl.innerHTML);
+        if (quantity > 1) {
+          spanEl.innerHTML = quantity - 1;
+        }
+        updateCartPrice();
+      });
+
+      plusBtn.addEventListener("click", () => {
+        let quantity = parseInt(spanEl.innerHTML);
+        spanEl.innerHTML = quantity + 1;
+        updateCartPrice();
+      });
     });
-  });
-
-
   };
 
   // Update Cart Price
   const updateCartPrice = () => {
     let productWrap = document.querySelectorAll(".product-wrap");
     let totalCart = 0;
+    let totalQuantity = 0;
 
-    productWrap.forEach((product)=> {
+    productWrap.forEach((product) => {
       const quantity = product.querySelector(".product-quantity span").innerHTML;
       const quantityInt = parseInt(quantity);
 
-      console.log(quantityInt);
       const price = product.querySelector(".product-cart-text .product-price").innerHTML;
-      
-      const priceFloat = parseFloat(price.replace("","$"));
-      console.log(priceFloat); //NaN fix
+
+      const priceFloat = parseFloat(price.replace("$", ""));
+
+      totalCart += priceFloat * quantityInt;
+      totalQuantity += quantityInt;
     });
+
+    // Update Total Price
+    let totalEl = document.querySelector(".cart-subtotal span");
+    totalEl.innerHTML = totalCart + "$";
+
+    // Add quantity to cartIC
+    let cartQuantity = document.querySelector(".user-logo i span");
+    cartQuantity.innerHTML = totalQuantity;
+
+    if (totalQuantity > 10) {
+      cartQuantity.innerHTML = "10+";
+    } 
+   
   };
-
-
 };
 
 // Category Filter
