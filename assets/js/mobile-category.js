@@ -124,42 +124,121 @@ const productsRender = (data) => {
     }
 
     productRow.appendChild(divEl);
+
+    saveCartToLocalStorage();
     updateCartPrice();
 
-    // Delete Products
-    const removeProduct = (item) => {
-      item.parentElement.parentElement.parentElement.remove();
-    };
+    cartFunction(divEl);
 
-    let removeBtn = document.querySelectorAll("#remove-btn");
-    removeBtn.forEach((item) => {
-      item.addEventListener("click", () => {
-        removeProduct(item);
+  };
+
+  // Seperate remove + quantity function
+  const cartFunction = (divEl) => {
+    // console.log(divEl);
+
+    const removeProduct = (button) => {
+      let buttonParent = button.parentElement.parentElement.parentElement;
+      return buttonParent.remove();
+    }
+    // Remove Function
+    let removeBtn = divEl.querySelectorAll(".product-cart-image i");
+    // console.log(removeBtn);
+    removeBtn.forEach((button) => {
+      button.addEventListener("click", () => {
+        removeProduct(button)
+        saveCartToLocalStorage();
         updateCartPrice();
-      });
+      })
     });
 
-    // Quantity Function (Need to be fixed)
-    let spanElement = document.querySelectorAll(".product-quantity span");
-    spanElement.forEach((spanEl) => {
-      let minusBtn = spanEl.previousElementSibling;
-      let plusBtn = spanEl.nextElementSibling;
+    // Quantity Function
+    const spanEl = divEl.querySelector(".product-quantity span");
+    const minusBtn = divEl.querySelector(".minus-button");
+    const plusBtn = divEl.querySelector(".plus-button");
 
-      minusBtn.addEventListener("click", () => {
-        let quantity = parseInt(spanEl.innerHTML);
-        if (quantity > 1) {
-          spanEl.innerHTML = quantity - 1;
-        }
-        updateCartPrice();
-      });
+    minusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      if (quantity > 1) {
+        spanEl.innerHTML = quantity - 1;
+      }
+      saveCartToLocalStorage();
+      updateCartPrice();
+    });
 
-      plusBtn.addEventListener("click", () => {
-        let quantity = parseInt(spanEl.innerHTML);
-        spanEl.innerHTML = quantity + 1;
-        updateCartPrice();
-      });
+    plusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      spanEl.innerHTML = quantity + 1;
+      saveCartToLocalStorage();
+      updateCartPrice();
     });
   };
+  
+
+
+
+  // Save cart to local storage
+const saveCartToLocalStorage = () => {
+  let productWraps = document.querySelectorAll(".product-wrap");
+  let cartItems = [];
+
+  productWraps.forEach((productWrap) => {
+    let imgSrc = productWrap.querySelector(".product-cart-image img").src;
+    let name = productWrap.querySelector(".product-name").innerHTML;
+    let price = productWrap.querySelector(".product-price").innerHTML;
+    let quantity = productWrap.querySelector(".product-quantity span").innerHTML;
+
+    cartItems.push({
+      imgSrc,
+      name,
+      price,
+      quantity
+    });
+  });
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
+
+// Load cart from local storage
+const loadCartFromLocalStorage = () => {
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  cartItems.forEach((item) => {
+    console.log(item);
+    addToCartItemFromLocalStorage(item.price, item.name, item.imgSrc, item.quantity);
+  });
+};
+
+// Add cart from localStorage
+const addToCartItemFromLocalStorage = (price, name, imgSrc, quantity) => {
+  let productRow = document.querySelector("#product-row-js");
+
+  // Create div class
+  let divEl = document.createElement("div");
+  divEl.classList.add("product-wrap");
+
+  let cartHTML = `
+    <div class="product-cart">
+      <div class="product-cart-image">
+        <img src="${imgSrc}" alt="${name}">
+        <i id="remove-btn" class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="product-cart-text">
+        <p class="product-name">${name}</p>
+        <p class="product-price">${price}</p>
+      </div>
+    </div>
+    <div class="product-quantity">
+      <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
+      <span>${quantity}</span>
+      <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
+    </div>
+  `;
+
+  divEl.innerHTML = cartHTML;
+  productRow.appendChild(divEl);
+  updateCartPrice();
+
+  cartFunction(divEl);
+}
 
   // Update Cart Price
   const updateCartPrice = () => {
@@ -192,6 +271,9 @@ const productsRender = (data) => {
     } 
    
   };
+
+  loadCartFromLocalStorage();
+
 };
 
 // Category Filter

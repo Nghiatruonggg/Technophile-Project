@@ -110,16 +110,14 @@ const searchRender = (data) => {
 
   }
 
-  // Show info to cart popup
+  // Show Images + Price to Cart
   const addToCartItem = (price, name, imgSrc) => {
     let productRow = document.querySelector("#product-row-js");
-    // console.log(productRow);
 
-    // Create div
+    // Create div class
     let divEl = document.createElement("div");
-    // console.log(divEl);
 
-    // Create class for divEl
+    // Put divEl into productRow
     divEl.classList.add("product-wrap");
 
     let cartHTML = `
@@ -140,69 +138,146 @@ const searchRender = (data) => {
       <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
       <span>1</span>
       <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
-    </div>`
-
+    </div>
+    `;
 
     divEl.innerHTML = cartHTML;
-    updateCartPrice();
 
-
-    // Check to see if there are similar products
+    // Check to see if there are the same products on cart
     let cartImgEl = document.querySelectorAll(".product-cart-image");
     let isDuplicated = false;
 
-    cartImgEl.forEach((image) => {
-      let itemSrc = image.querySelectorAll("img");
-      itemSrc.forEach((value) => {
+    cartImgEl.forEach((item) => {
+      let itemImg = item.querySelectorAll("img");
+      itemImg.forEach((value) => {
         if (value.src == imgSrc) {
-          alert("Product Already Existed");
+          alert("Products Already Existed");
           isDuplicated = true;
         }
       });
     });
 
     if (isDuplicated == true) {
-      return null
+      return null;
     }
-    
+
     productRow.appendChild(divEl);
 
-    // Remove cart item
+    saveCartToLocalStorage();
+    updateCartPrice();
+
+    cartFunction(divEl);
+
+  };
+
+  // Seperate remove + quantity function
+  const cartFunction = (divEl) => {
+    // console.log(divEl);
+
     const removeProduct = (button) => {
-      button.parentElement.parentElement.parentElement.remove();
+      let buttonParent = button.parentElement.parentElement.parentElement;
+      return buttonParent.remove();
     }
-    
-    let removeBtn = document.querySelectorAll("#remove-btn");
+    // Remove Function
+    let removeBtn = divEl.querySelectorAll(".product-cart-image i");
+    // console.log(removeBtn);
     removeBtn.forEach((button) => {
       button.addEventListener("click", () => {
         removeProduct(button)
+        saveCartToLocalStorage();
         updateCartPrice();
-      });
+      })
     });
 
+    // Quantity Function
+    const spanEl = divEl.querySelector(".product-quantity span");
+    const minusBtn = divEl.querySelector(".minus-button");
+    const plusBtn = divEl.querySelector(".plus-button");
 
-    // Quantity Function (Need to be fixed)
-    let spanElement = document.querySelectorAll(".product-quantity span");
-    spanElement.forEach((spanEl) => {
-      let minusBtn = spanEl.previousElementSibling;
-      let plusBtn = spanEl.nextElementSibling;
-
-      minusBtn.addEventListener("click", () => {
-        let quantity = parseInt(spanEl.innerHTML);
-        if (quantity > 1) {
-          spanEl.innerHTML = quantity - 1;
-        }
-        updateCartPrice();
-      });
-
-      plusBtn.addEventListener("click", () => {
-        let quantity = parseInt(spanEl.innerHTML);
-        spanEl.innerHTML = quantity + 1;
-        updateCartPrice();
-      });
+    minusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      if (quantity > 1) {
+        spanEl.innerHTML = quantity - 1;
+      }
+      saveCartToLocalStorage();
+      updateCartPrice();
     });
 
-  }
+    plusBtn.addEventListener("click", () => {
+      let quantity = parseInt(spanEl.innerHTML);
+      spanEl.innerHTML = quantity + 1;
+      saveCartToLocalStorage();
+      updateCartPrice();
+    });
+  };
+  
+
+
+
+  // Save cart to local storage
+const saveCartToLocalStorage = () => {
+  let productWraps = document.querySelectorAll(".product-wrap");
+  let cartItems = [];
+
+  productWraps.forEach((productWrap) => {
+    let imgSrc = productWrap.querySelector(".product-cart-image img").src;
+    let name = productWrap.querySelector(".product-name").innerHTML;
+    let price = productWrap.querySelector(".product-price").innerHTML;
+    let quantity = productWrap.querySelector(".product-quantity span").innerHTML;
+
+    cartItems.push({
+      imgSrc,
+      name,
+      price,
+      quantity
+    });
+  });
+
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
+
+// Load cart from local storage
+const loadCartFromLocalStorage = () => {
+  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  cartItems.forEach((item) => {
+    console.log(item);
+    addToCartItemFromLocalStorage(item.price, item.name, item.imgSrc, item.quantity);
+  });
+};
+
+// Add cart from localStorage
+const addToCartItemFromLocalStorage = (price, name, imgSrc, quantity) => {
+  let productRow = document.querySelector("#product-row-js");
+
+  // Create div class
+  let divEl = document.createElement("div");
+  divEl.classList.add("product-wrap");
+
+  let cartHTML = `
+    <div class="product-cart">
+      <div class="product-cart-image">
+        <img src="${imgSrc}" alt="${name}">
+        <i id="remove-btn" class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="product-cart-text">
+        <p class="product-name">${name}</p>
+        <p class="product-price">${price}</p>
+      </div>
+    </div>
+    <div class="product-quantity">
+      <button class="minus-button" type="button"><i class="fa-solid fa-minus"></i></button>
+      <span>${quantity}</span>
+      <button class="plus-button" type="button"><i class="fa-solid fa-plus"></i></button>
+    </div>
+  `;
+
+  divEl.innerHTML = cartHTML;
+  productRow.appendChild(divEl);
+  updateCartPrice();
+
+  cartFunction(divEl);
+}
+
   // Update Cart Price
   const updateCartPrice = () => {
     let productWrap = document.querySelectorAll(".product-wrap");
@@ -210,14 +285,10 @@ const searchRender = (data) => {
     let totalQuantity = 0;
 
     productWrap.forEach((product) => {
-      const quantity = product.querySelector(
-        ".product-quantity span"
-      ).innerHTML;
+      const quantity = product.querySelector(".product-quantity span").innerHTML;
       const quantityInt = parseInt(quantity);
 
-      const price = product.querySelector(
-        ".product-cart-text .product-price"
-      ).innerHTML;
+      const price = product.querySelector(".product-cart-text .product-price").innerHTML;
 
       const priceFloat = parseFloat(price.replace("$", ""));
 
@@ -238,6 +309,9 @@ const searchRender = (data) => {
     } 
    
   };
+
+  loadCartFromLocalStorage();
+
 
 };
 
